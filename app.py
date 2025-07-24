@@ -97,44 +97,44 @@ HTML_FORM = f'''
 </html>
 '''
 
-FILES_LIST_TEMPLATE = f'''
+FILES_LIST_TEMPLATE = '''
 <!doctype html>
 <html>
 <head>
     <title>Uploaded Files</title>
-    {COMMON_STYLES}
+    ''' + COMMON_STYLES + '''
     <style>
-        table {{
+        table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
-        }}
-        th, td {{
+        }
+        th, td {
             padding: 12px;
             text-align: left;
             border: 1px solid #ddd;
-        }}
-        th {{
+        }
+        th {
             background-color: #f8f9fa;
             font-weight: 500;
-        }}
-        tr:nth-child(even) {{
+        }
+        tr:nth-child(even) {
             background-color: #f8f9fa;
-        }}
-        tr:hover {{
+        }
+        tr:hover {
             background-color: #f2f2f2;
-        }}
-        .download-btn {{
+        }
+        .download-btn {
             padding: 6px 12px;
             background-color: #28a745;
             color: white;
             text-decoration: none;
             border-radius: 4px;
             font-size: 14px;
-        }}
-        .download-btn:hover {{
+        }
+        .download-btn:hover {
             background-color: #218838;
-        }}
+        }
     </style>
 </head>
 <body>
@@ -209,7 +209,7 @@ def download_file(filename):
     try:
         return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=True)
     except Exception as e:
-        return f"Error downloading file: {str(e)}", 404
+        return (f"Error downloading file: {str(e)} 404")
 
 @app.route('/qr')
 def serve_qr():
